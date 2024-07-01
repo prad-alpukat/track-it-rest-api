@@ -19,11 +19,6 @@ export const getApiDocs = async () => {
                 },
             },
             security: [],
-            tags: [
-                {
-                    name: 'Hello',
-                },
-            ],
         },
     });
     return spec;
