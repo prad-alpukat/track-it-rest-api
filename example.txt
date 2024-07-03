@@ -1,0 +1,100 @@
+Alarm
+  const data = [
+    {
+      id: 1,
+      name: "Alarm name",
+      time: "06.00 PM",
+      date: "Friday, May 24",
+    },
+  ];
+
+Calendar
+  const events = [
+    { title: "Title", start: "2024-05-02", end: "2024-05-02" },
+    { title: "Title", start: "2024-05-02", end: "2024-05-02" },
+    { title: "Title", start: "2024-05-02", end: "2024-05-02" },
+    { title: "Title", start: "2024-05-02", end: "2024-05-02" },
+    { title: "Title", start: "2024-05-02", end: "2024-05-02" },
+    { title: "Title", start: "2024-05-02", end: "2024-05-02" },
+    { title: "Title", start: "2024-05-02", end: "2024-05-02" },
+    { title: "Title", start: "2024-05-02", end: "2024-05-02" },
+    { title: "Title", start: "2024-05-02", end: "2024-05-02" },
+  ];
+
+Money Calculator
+ data_balance = [
+    {
+      id: 1,
+      name: "Balance name",
+      money: "5.000.000",
+    },
+    {
+      id: 2,
+      name: "Balance name",
+      money: "5.000.000",
+    },
+  ],
+
+  data_transactions = [
+    {
+      id: 1,
+      name: "Transaction name",
+      balance_name: "Balance name",
+      money: "5.000.000",
+    },
+    {
+      id: 2,
+      name: "Transaction name",
+      balance_name: "Balance name",
+      money: "5.000.000",
+    },
+  ],
+
+const finance = {
+    income: 1_000_000,
+    expenditure: 2_00_000,
+  };
+
+Notes
+  const data = [
+    {
+      id: 1,
+      date: "24 May 2024, 06.00 PM",
+      name: "Note name",
+      description: "Description",
+    },
+    {
+      id: 2,
+      date: "24 May 2024, 06.00 PM",
+      name: "Note name",
+      description: "Description",
+    },
+  ];
+
+Reminders
+  const data = [
+    {
+      id: 1,
+      name: "Reminder name",
+      time: "06.00 PM",
+    },
+    {
+      id: 2,
+      name: "Reminder name",
+      time: "06.00 PM",
+    },
+  ];
+
+Tasks
+  const data = [
+    {
+      id: 1,
+      name: "Task name",
+      description: "Description",
+    },
+    {
+      id: 2,
+      name: "Task name",
+      description: "Description",
+    },
+  ];
