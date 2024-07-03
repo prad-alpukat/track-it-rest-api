@@ -2,12 +2,12 @@ import { NextRequest, NextResponse } from 'next/server';
 
 /**
  * @swagger
- * /api/reminder:
+ * /api/money-calculator/balance:
  *   get:
- *     summary: Retrieve a list of reminders
+ *     summary: Retrieve a list of balances
  *     responses:
  *       200:
- *         description: A list of reminders
+ *         description: A list of balances
  *         content:
  *           application/json:
  *             schema:
@@ -19,22 +19,21 @@ import { NextRequest, NextResponse } from 'next/server';
  *                     type: integer
  *                   name:
  *                     type: string
- *                   time:
- *                     type: string
+ *                   money:
+ *                     type: integer
  */
-
 export async function GET(request: NextRequest) {
-    const reminders = [
-        {
-            id: 1,
-            name: "Gaji Karyawan",
-            time: "08.00 AM",
-        },
-        {
-            id: 2,
-            name: "Rapat Pagi",
-            time: "09.00 AM",
-        },
-    ];
-    return NextResponse.json(reminders, { status: 200 });
+  const transactions = [
+    {
+      id: 1,
+      name: "Balance A",
+      money: 5_000_000,
+    },
+    {
+      id: 2,
+      name: "Balance B",
+      money: 10_000_000,
+    },
+  ];
+  return NextResponse.json(transactions, { status: 200 });
 }

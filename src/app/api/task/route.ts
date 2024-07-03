@@ -2,10 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 
 /**
  * @swagger
- * /api/tasks:
+ * /api/task:
  *   get:
  *     summary: Retrieve a list of tasks
- *     description: Retrieve a list of tasks with their details
  *     responses:
  *       200:
  *         description: A list of tasks
@@ -18,19 +17,45 @@ import { NextRequest, NextResponse } from 'next/server';
  *                 properties:
  *                   id:
  *                     type: integer
- *                     description: The task ID
- *                   title:
+ *                   name:
  *                     type: string
- *                     description: The title of the task
+ *                   description:
+ *                     type: string
  *                   completed:
  *                     type: boolean
- *                     description: The status of the task
  */
-
 export async function GET(request: NextRequest) {
     const tasks = [
-        { id: 1, title: 'Finish project', completed: false },
-        { id: 2, title: 'Clean the house', completed: true },
+        {
+            id: 1,
+            name: "Membersihkan rumah",
+            description: "membersihkan rumah jam 10 pagi",
+            completed: false,
+        },
+        {
+            id: 2,
+            name: "Update website halaman about",
+            description: "update responsiveness website halaman about jam 2 siang",
+            completed: false,
+        },
+        {
+            id: 3,
+            name: "Buy groceries",
+            description: "buy groceries for the week",
+            completed: true,
+        },
+        {
+            id: 4,
+            name: "Finish coding assignment",
+            description: "complete the coding assignment by tomorrow",
+            completed: false,
+        },
+        {
+            id: 5,
+            name: "Attend meeting",
+            description: "attend the project meeting at 3 PM",
+            completed: false,
+        }
     ];
     return NextResponse.json(tasks, { status: 200 });
 }

@@ -33,8 +33,20 @@ import { NextRequest, NextResponse } from 'next/server';
  */
 export async function GET(request: NextRequest) {
     const events = [
-        { id: '1', title: 'Event 1', start: '2023-07-01T10:00:00', end: '2023-07-01T12:00:00' },
-        { id: '2', title: 'Event 2', start: '2023-07-02T12:00:00', end: '2023-07-02T14:00:00' },
+        { id: 1, title: "Title 1", start: "2024-05-02", end: "2024-05-02" },
+        { id: 2, title: "Title 2", start: "2024-05-03", end: "2024-05-03" },
+        { id: 3, title: "Title 3", start: "2024-05-04", end: "2024-05-04" },
     ];
     return NextResponse.json(events, { status: 200 });
+}
+
+/**
+ * @swagger
+ * /api/calendar:
+ *   post:
+ *     summary: Create a new event
+ *     description: Create a new event with the provided details
+ */
+export async function POST(request: NextRequest) {
+    return NextResponse.json({ message: "Event created" }, { status: 201 });
 }

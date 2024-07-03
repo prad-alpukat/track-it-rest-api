@@ -19,15 +19,31 @@ import { NextRequest, NextResponse } from 'next/server';
  *                   id:
  *                     type: integer
  *                     description: The note ID
- *                   content:
+ *                   date:
  *                     type: string
- *                     description: The content of the note
+ *                     description: The date of the note
+ *                   name:
+ *                     type: string
+ *                     description: The name of the note
+ *                   description:
+ *                     type: string
+ *                     description: The description of the note
  */
 
 export async function GET(request: NextRequest) {
     const notes = [
-        { id: 1, content: 'Buy milk' },
-        { id: 2, content: 'Attend meeting at 10 AM' },
+        {
+            id: 1,
+            date: "24 May 2024, 06.00 PM",
+            name: "Beli Bahan Baku",
+            description: "Beli bahan baku untuk produksi minggu depan",
+        },
+        {
+            id: 2,
+            date: "24 May 2024, 06.00 PM",
+            name: "Bayar Gaji Karyawan",
+            description: "Bayar gaji karyawan minggu ini",
+        },
     ];
     return NextResponse.json(notes, { status: 200 });
 }
