@@ -5,6 +5,8 @@ import { NextRequest, NextResponse } from 'next/server';
  * /api/money-calculator/balance:
  *   get:
  *     summary: Retrieve a list of balances
+ *     tags:
+ *      - Money Calculator
  *     responses:
  *       200:
  *         description: A list of balances
@@ -37,3 +39,17 @@ export async function GET(request: NextRequest) {
   ];
   return NextResponse.json(transactions, { status: 200 });
 }
+
+/**
+ * @swagger
+ * /api/money-calculator/balance:
+ *   post:
+ *     summary: Create a new balance
+ *     tags:
+ *      - Money Calculator
+ */
+export async function POST(request: NextRequest) {
+  return NextResponse.json({ message: "Balance created" }, { status: 201 });
+}
+
+// update balance

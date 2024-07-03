@@ -5,6 +5,8 @@ import { NextRequest, NextResponse } from 'next/server';
  * /api/task:
  *   get:
  *     summary: Retrieve a list of tasks
+ *      tags:
+ *      - Task
  *     responses:
  *       200:
  *         description: A list of tasks

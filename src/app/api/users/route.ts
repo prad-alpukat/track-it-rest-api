@@ -6,6 +6,8 @@ import { NextRequest, NextResponse } from 'next/server';
  *   get:
  *     summary: Retrieve a list of users
  *     description: Retrieve a list of users with their details
+ *    tags:
+ *     - Users
  *     responses:
  *       200:
  *         description: A list of users
