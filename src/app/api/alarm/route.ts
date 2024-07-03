@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-
 /**
  * @swagger
  * /api/alarm:
@@ -18,15 +17,58 @@ import { NextRequest, NextResponse } from 'next/server';
  *                 properties:
  *                   id:
  *                     type: integer
+ *                   name:
+ *                     type: string
  *                   time:
  *                     type: string
- *                   label:
+ *                   date:
+ *                     type: string
+ *                   created_at:
  *                     type: string
  */
 export async function GET(request: NextRequest) {
     const alarms = [
-        { id: 1, time: '07:00', label: 'Morning Alarm' },
-        { id: 2, time: '18:00', label: 'Evening Alarm' },
+        {
+            id: 1,
+            name: "Bangun Tidur",
+            time: "06.00 AM",
+            date: "Friday, May 24",
+            created_at: "2021-05-24T18:00:00.000Z",
+        },
+        {
+            id: 2,
+            name: "Makan Siang",
+            time: "11.00 AM",
+            date: "Friday, May 24",
+            created_at: "2021-05-24T18:00:00.000Z",
+        },
+        {
+            id: 3,
+            name: "Sore Santai",
+            time: "04.00 PM",
+            date: "Friday, May 24",
+            created_at: "2021-05-24T18:00:00.000Z",
+        },
     ];
     return NextResponse.json(alarms, { status: 200 });
+}
+
+/**
+ * @swagger
+ * /api/alarm:
+ *   post:
+ *     summary: Create a new alarm
+ *     responses:
+ *       201:
+ *         description: Alarm created
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ */
+export async function POST(request: NextRequest) {
+    return NextResponse.json({ message: "Alarm created" }, { status: 201 });
 }
