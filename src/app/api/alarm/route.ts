@@ -31,22 +31,22 @@ export async function GET(request: NextRequest) {
         {
             id: 1,
             name: "Bangun Tidur",
-            time: "06.00 AM",
-            date: "Friday, May 24",
+            time: "06:00:00 AM",
+            date: "Friday, May 24, 2024",
             created_at: "2021-05-24T18:00:00.000Z",
         },
         {
             id: 2,
             name: "Makan Siang",
-            time: "11.00 AM",
-            date: "Friday, May 24",
+            time: "11:00:00 AM",
+            date: "Friday, May 24, 2024",
             created_at: "2021-05-24T18:00:00.000Z",
         },
         {
             id: 3,
             name: "Sore Santai",
-            time: "04.00 PM",
-            date: "Friday, May 24",
+            time: "04:00:00 PM",
+            date: "Friday, May 24, 2024",
             created_at: "2021-05-24T18:00:00.000Z",
         },
     ];
