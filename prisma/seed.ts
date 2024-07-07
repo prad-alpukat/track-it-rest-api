@@ -1,4 +1,3 @@
-// prisma/seed.js
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
@@ -25,8 +24,18 @@ async function main() {
             },
         ],
     });
+    console.log('Seeding Alarm completed')
 
-    console.log('Seeding Alarm completed');
+    await prisma.calendar.createMany({
+        data: [
+            { title: "Title 1", start: "2024-05-02", end: "2024-05-02" },
+            { title: "Title 2", start: "2024-05-03", end: "2024-05-03" },
+            { title: "Title 3", start: "2024-05-04", end: "2024-05-04" },
+        ],
+    });
+    console.log('Seeding Calendar completed');
+
+    console.log('All Seeding completed');
 }
 
 main()
