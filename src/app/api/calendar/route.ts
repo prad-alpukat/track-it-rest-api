@@ -39,29 +39,34 @@ export async function GET(request: NextRequest) {
     const url = new URL(data.url)
     const date = url.searchParams.get('date')
 
-    if (!date) {
-        const events = await prisma.calendar.findMany();
+
+
+    if (date) {
+        const events = await prisma.calendar.findMany({
+            where: {
+                OR: [
+                    {
+                        start: {
+                            contains: date,
+                        },
+                    },
+                    {
+                        end: {
+                            contains: date,
+                        },
+                    },
+                ],
+            },
+        });
+
+        if (events.length === 0) return NextResponse.json({ message: 'No events found' }, { status: 404 });
+
         return NextResponse.json(events, { status: 200 });
     }
 
-    const events = await prisma.calendar.findMany({
-        where: {
-            OR: [
-                {
-                    start: {
-                        contains: date,
-                    },
-                },
-                {
-                    end: {
-                        contains: date,
-                    },
-                },
-            ],
-        },
-    });
-
+    const events = await prisma.calendar.findMany();
     return NextResponse.json(events, { status: 200 });
+
 }
 
 
