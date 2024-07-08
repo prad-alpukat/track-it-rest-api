@@ -28,9 +28,9 @@ async function main() {
 
     await prisma.calendar.createMany({
         data: [
-            { title: "Title 1", start: "2024-05-02", end: "2024-05-02" },
-            { title: "Title 2", start: "2024-05-03", end: "2024-05-03" },
-            { title: "Title 3", start: "2024-05-04", end: "2024-05-04" },
+            { title: "Title 1", start: "2024-05-02T09:00:00.000Z", end: "2024-05-02T18:00:00.000Z" },
+            { title: "Title 2", start: "2024-05-03T09:00:00.000Z", end: "2024-05-0318:00:00.000Z" },
+            { title: "Title 3", start: "2024-05-04T09:00:00.000Z", end: "2024-05-0418:00:00.000Z" },
         ],
     });
     console.log('Seeding Calendar completed');

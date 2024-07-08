@@ -39,8 +39,6 @@ export async function GET(request: NextRequest) {
     const url = new URL(data.url)
     const date = url.searchParams.get('date')
 
-
-
     if (date) {
         const events = await prisma.calendar.findMany({
             where: {
