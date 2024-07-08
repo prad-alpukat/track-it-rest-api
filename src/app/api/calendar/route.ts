@@ -35,7 +35,32 @@ import prisma from '@/lib/prisma';
  *                     description: The end time of the event
  */
 export async function GET(request: NextRequest) {
-    const events = await prisma.calendar.findMany();
+    const data = request
+    const url = new URL(data.url)
+    const date = url.searchParams.get('date')
+
+    if (!date) {
+        const events = await prisma.calendar.findMany();
+        return NextResponse.json(events, { status: 200 });
+    }
+
+    const events = await prisma.calendar.findMany({
+        where: {
+            OR: [
+                {
+                    start: {
+                        contains: date,
+                    },
+                },
+                {
+                    end: {
+                        contains: date,
+                    },
+                },
+            ],
+        },
+    });
+
     return NextResponse.json(events, { status: 200 });
 }
 
