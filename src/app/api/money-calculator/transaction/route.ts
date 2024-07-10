@@ -46,6 +46,12 @@ export async function GET(request: NextRequest) {
       balance_name: "Balance B",
       money: -10_000_000,
     },
+    {
+      id: 4,
+      name: "Freelance web design",
+      balance_name: "Balance B",
+      money: 3_000_000,
+    }
   ];
   return NextResponse.json(transactions, { status: 200 });
 }
