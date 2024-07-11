@@ -8,6 +8,9 @@ import { NextRequest, NextResponse } from "next/server";
  *     description: Retrieve a note with its details
  *     tags:
  *       - Notes
+ *     parameters:
+ *       - in: path
+ *         name: id
  *     responses:
  *       200:
  *         description: A note
@@ -81,8 +84,8 @@ export async function DELETE() {
  *     tags:
  *       - Notes
  *     parameters:
- *       - name: id
- *         in: path
+ *       - in: path
+ *         name: id
  *     requestBody:
  *       content:
  *         application/json:
@@ -117,17 +120,30 @@ export async function DELETE() {
  *                   description: The description of the note
  */
 
-export async function PUT(request: NextRequest) {
+export async function PUT(request: NextRequest, { params }: { params: { id: string } }) {
+    const { id } = params;
     const body = await request.json();
     if (!body.name || !body.description) {
         return NextResponse.json({ message: "Name and description are required" }, { status: 400 });
     }
 
-    const note = {
-        id: 1,
-        date: "24 May 2024, 06.00 PM",
-        name: body.name,
-        description: body.description,
-    };
+
+    const notes = [
+        {
+            id: 1,
+            date: "24 May 2024, 06.00 PM",
+            name: "Beli Bahan Baku",
+            description: "Beli bahan baku untuk produksi minggu depan",
+        },
+        {
+            id: 2,
+            date: "24 May 2024, 06.00 PM",
+            name: "Bayar Gaji Karyawan",
+            description: "Bayar gaji karyawan minggu ini",
+        },
+    ];
+
+    const note = notes.find((note) => note.id === parseInt(id));
+
     return NextResponse.json(note, { status: 200 });
 }
