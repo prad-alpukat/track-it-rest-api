@@ -15,8 +15,12 @@ import { NextResponse } from "next/server";
  *             schema:
  *               type: object
  *               properties:
- *                 date: 
+ *                 month:
  *                   type: string
+ *                   example: May
+ *                 year:
+ *                   type: string
+ *                   example: 2024
  *                 income:
  *                   type: integer
  *                 expenditure:
@@ -24,7 +28,8 @@ import { NextResponse } from "next/server";
  */
 export async function GET() {
     const finance = {
-        date: new Date().toISOString(),
+        month: "May",
+        year: "2024",
         income: 1_000_000,
         expenditure: 2_00_000,
     }
