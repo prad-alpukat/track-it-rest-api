@@ -6,7 +6,7 @@ import { NextRequest, NextResponse } from 'next/server';
  *   get:
  *     summary: Retrieve a list of transactions
  *     tags:
- *      - Money Calculator
+ *      - Money Calculator / transaction
  *     responses:
  *       200:
  *         description: A list of transactions
@@ -62,7 +62,7 @@ export async function GET(request: NextRequest) {
  *   post:
  *     summary: Create a new transaction
  *     tags:
- *      - Money Calculator
+ *      - Money Calculator / transaction
  */
 export async function POST(request: NextRequest) {
   return NextResponse.json({ message: "Transaction created" }, { status: 201 });

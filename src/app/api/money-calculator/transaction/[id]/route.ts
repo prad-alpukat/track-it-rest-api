@@ -6,7 +6,7 @@ import { NextRequest, NextResponse } from 'next/server';
  *   delete:
  *     summary: Delete a transaction by ID
  *     tags:
- *      - Money Calculator
+ *      - Money Calculator / transaction
  *     parameters:
  *       - in: path
  *         name: id

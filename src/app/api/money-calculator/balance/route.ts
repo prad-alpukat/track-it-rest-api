@@ -6,7 +6,7 @@ import { NextRequest, NextResponse } from 'next/server';
  *   get:
  *     summary: Retrieve a list of balances
  *     tags:
- *      - Money Calculator
+ *      - Money Calculator / balance
  *     responses:
  *       200:
  *         description: A list of balances
@@ -46,7 +46,7 @@ export async function GET(request: NextRequest) {
  *   post:
  *     summary: Create a new balance
  *     tags:
- *      - Money Calculator
+ *      - Money Calculator / balance
  */
 export async function POST(request: NextRequest) {
   return NextResponse.json({ message: "Balance created" }, { status: 201 });
