@@ -32,13 +32,25 @@ import { NextRequest, NextResponse } from "next/server";
  *                   type: string
  *                   description: The description of the note
  */
-export async function GET(request: NextRequest) {
-    const note = {
-        id: 1,
-        date: "24 May 2024, 06.00 PM",
-        name: "Beli Bahan Baku",
-        description: "Beli bahan baku untuk produksi minggu depan",
-    };
+export async function GET(request: NextRequest, { params }: { params: { id: string } }) {
+    const { id } = params;
+
+    const notes = [
+        {
+            id: 1,
+            date: "24 May 2024, 06.00 PM",
+            name: "Beli Bahan Baku",
+            description: "Beli bahan baku untuk produksi minggu depan",
+        },
+        {
+            id: 2,
+            date: "24 May 2024, 06.00 PM",
+            name: "Bayar Gaji Karyawan",
+            description: "Bayar gaji karyawan minggu ini",
+        },
+    ];
+
+    const note = notes.find((note) => note.id === parseInt(id));
     return NextResponse.json(note, { status: 200 });
 }
 
@@ -127,23 +139,12 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
         return NextResponse.json({ message: "Name and description are required" }, { status: 400 });
     }
 
-
-    const notes = [
-        {
-            id: 1,
-            date: "24 May 2024, 06.00 PM",
-            name: "Beli Bahan Baku",
-            description: "Beli bahan baku untuk produksi minggu depan",
-        },
-        {
-            id: 2,
-            date: "24 May 2024, 06.00 PM",
-            name: "Bayar Gaji Karyawan",
-            description: "Bayar gaji karyawan minggu ini",
-        },
-    ];
-
-    const note = notes.find((note) => note.id === parseInt(id));
+    const note = {
+        id: parseInt(id),
+        date: "24 May 2024, 06.00 PM",
+        name: body.name,
+        description: body.description,
+    };
 
     return NextResponse.json(note, { status: 200 });
 }
