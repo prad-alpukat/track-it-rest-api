@@ -21,8 +21,10 @@ import { NextRequest, NextResponse } from 'next/server';
  *                     type: integer
  *                   name:
  *                     type: string
- *                   time:
+ *                   dateTime:
  *                     type: string
+ *                   description:
+ *                     type: string  
  */
 
 export async function GET(request: NextRequest) {
@@ -30,12 +32,14 @@ export async function GET(request: NextRequest) {
         {
             id: 1,
             name: "Gaji Karyawan",
-            time: "08.00 AM",
+            dateTime: new Date().toISOString(),
+            description: "Gaji Karyawan Juli"
         },
         {
             id: 2,
             name: "Rapat Pagi",
-            time: "09.00 AM",
+            dateTime: new Date().toISOString(),
+            description: "Rapat Pagi di Kantor baru jalan palagan km 10"
         },
     ];
     return NextResponse.json(reminders, { status: 200 });
