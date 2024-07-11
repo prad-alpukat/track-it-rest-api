@@ -81,8 +81,8 @@ export async function DELETE() {
  *     tags:
  *       - Notes
  *     parameters:
- *      - name: id
- *       in: path
+ *       - name: id
+ *         in: path
  *     requestBody:
  *       content:
  *         application/json:
