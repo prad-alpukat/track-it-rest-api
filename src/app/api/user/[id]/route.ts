@@ -33,9 +33,17 @@ export async function GET(request: NextRequest, { params }: { params: { id: stri
     const { id } = params
 
     const users = [
-        { id: 1, username: 'John Doe', email: 'jhon@gmail.com' },
-        { id: 2, username: 'Jane Smith', email: 'jane@gmail.com' },
-    ];
+        {
+            id: 1,
+            username: "syalwa",
+            email: "syalwa@gmail.com",
+        },
+        {
+            id: 2,
+            username: "anton",
+            email: "anton@gmail.com"
+        }
+    ]
 
     const user = users.find((user) => user.id === parseInt(id));
     return NextResponse.json(user, { status: 200 });
