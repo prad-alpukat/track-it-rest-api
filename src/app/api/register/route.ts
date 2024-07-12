@@ -14,9 +14,6 @@ import { NextRequest, NextResponse } from "next/server";
  *           schema:
  *             type: object
  *             properties:
- *               username:
- *                 type: string
- *                 description: The username of the user
  *               email:
  *                 type: string
  *                 description: The email of the user
@@ -34,9 +31,6 @@ import { NextRequest, NextResponse } from "next/server";
  *                 id:
  *                   type: integer
  *                   description: The user ID
- *                 username:
- *                   type: string
- *                   description: The username of the user
  *                 email:
  *                   type: string
  *                   description: The email of the user
@@ -47,13 +41,16 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
 
     // validate the body
-    if (!body.username || !body.email || !body.password) {
+    if (!body.email || !body.password) {
         return NextResponse.json({ message: "Please provide all the required fields" }, { status: 400 });
     }
 
+    // create username
+    const username = body.email.split("@")[0];
+
     const new_user = {
         id: 17,
-        username: body.username,
+        username: username,
         email: body.email
     }
 
