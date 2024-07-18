@@ -1,6 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
-import { Prisma } from '@prisma/client';
+
+type Error = {
+    code: string,
+    message: string
+}
 
 interface Params {
     id: string
@@ -41,8 +45,10 @@ export async function DELETE(request: NextRequest, { params }: { params: Params 
         }, {
             status: 200
         });
-    } catch (error: unknown) {
-        if (error instanceof Prisma.PrismaClientKnownRequestError && error.code === 'P2025') {
+
+    } catch (error) {
+        // @ts-ignore
+        if (error.code === 'P2025') {
             return NextResponse.json({ error: 'Alarm not found' }, { status: 404 });
         }
         return NextResponse.json({ error: (error as Error).message }, { status: 500 });
