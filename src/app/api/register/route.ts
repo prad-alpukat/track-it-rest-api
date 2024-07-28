@@ -1,4 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
+import bcrypt from 'bcrypt';
+import prisma from '@/lib/prisma';
 
 /**
  * @swagger
@@ -35,26 +37,29 @@ import { NextRequest, NextResponse } from "next/server";
  *                   type: string
  *                   description: The email of the user
  */
-export async function POST(request: NextRequest) {
+export async function POST(req: NextRequest) {
+    try {
+        const { email, password } = await req.json();
 
-    // get the body of the request
-    const body = await request.json();
+        // Validasi input
+        if (!email || !password) {
+            return new NextResponse('Missing fields', { status: 400 });
+        }
 
-    // validate the body
-    if (!body.email || !body.password) {
-        return NextResponse.json({ message: "Please provide all the required fields" }, { status: 400 });
+        // Hash password
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        // Simpan user baru di database
+        const newUser = await prisma.user.create({
+            data: {
+                email,
+                password: hashedPassword,
+            },
+        });
+
+        return NextResponse.json({ message: 'User created successfully', user: newUser }, { status: 201 });
+    } catch (error) {
+        console.error(error);
+        return new NextResponse('Internal Server Error', { status: 500 });
     }
-
-    // create username
-    const username = body.email.split("@")[0];
-
-    const new_user = {
-        id: 17,
-        username: username,
-        email: body.email
-    }
-
-    // return body json
-    return NextResponse.json(new_user, { status: 200 });
-
 }
